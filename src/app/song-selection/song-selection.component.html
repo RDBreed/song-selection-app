@@ -1,0 +1,19 @@
+<div>
+  <h2>Kies liederen voor een datum</h2>
+
+  <label for="date">Selecteer een datum:</label>
+  <input type="date" [(ngModel)]="selectedDate" />
+
+  <div *ngFor="let song of selectedSongs; let i = index">
+    <label for="song">Kies lied {{ i + 1 }}:</label>
+    <select [(ngModel)]="selectedSongs[i]">
+      <option *ngFor="let song of availableSongs" [value]="song.title">{{ song.title }}</option>
+    </select>
+    <input type="text" placeholder="Eigen suggestie" [(ngModel)]="customSongs[i]" />
+  </div>
+
+  <label for="motivation">Motivatie:</label>
+  <textarea [(ngModel)]="motivation"></textarea>
+
+  <button (click)="submitSongs()">Versturen</button>
+</div>
