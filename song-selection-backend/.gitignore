@@ -1,0 +1,54 @@
+logs
+*.log
+HELP.md
+.gradle
+build/
+
+### eclipse
+.checkstyle
+.eclipse-pmd
+out
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+!.idea/codeStyles/Project.xml
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### mac OS ###
+.DS_Store
+
+/bin/
+/target/
+
+/.apt_generated_tests/
+
+### generated during build ###
+cicd-foss-dependencies.txt
+
+### some local tex stuff
+texfiles/
+log4j2-local.xml
+application-local.properties
+
+.gradle-home
