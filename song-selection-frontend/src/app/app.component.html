@@ -3,9 +3,11 @@
     <li>
       <a routerLink="/" routerLinkActive="active" class="text-white hover:text-gray-200 cursor-pointer">Home</a>
     </li>
-<!--    <li>-->
-<!--    <a routerLink="/select-songs" routerLinkActive="active" class="text-white hover:text-gray-200 cursor-pointer">Kies liederen</a>-->
-<!--    </li>-->
+    <li>
+      <a
+        *ngIf="!authService.isAuthenticated()"
+        routerLink="/login" routerLinkActive="active" class="text-white hover:text-gray-200 cursor-pointer">Login</a>
+    </li>
     <li>
       <button
         *ngIf="authService.isAuthenticated()"
@@ -18,17 +20,5 @@
   </ul>
 </nav>
 <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
-  <h2 class="text-2xl font-semibold mb-4">Beschikbare Datums</h2>
-
-  <ul class="list-none">
-    <li *ngFor="let date of availableDates" class="mb-2">
-      <a
-        [routerLink]="['/select-songs', date]"
-        class="text-blue-500 hover:underline"
-      >
-        {{ date }}
-      </a>
-    </li>
-  </ul>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

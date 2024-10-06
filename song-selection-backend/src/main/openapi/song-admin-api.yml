@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Admin Liedjes Selectie API
+  description: API voor het beheren van christelijke liederen en liedkeuzes.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+    description: Development server
+tags:
+  - name: songs
+    description: Liederen
+paths:
+  /auth/login:
+    post:
+      summary: "Inloggen voor gebruikers"
+      description: "Log de gebruiker in en retourneer een JWT-token."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "admin"
+                password:
+                  type: string
+                  example: "password123"
+      responses:
+        '200':
+          description: "Succesvol ingelogd"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzUxMiJ9..."
+        '401':
+          description: "Ongeldige inloggegevens"
+
+  /admin/dates:
+    post:
+      summary: "Admin - Datum toevoegen"
+      description: "Voeg een nieuwe datum toe waarop liederen kunnen worden gekozen."
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+                  example: "2024-09-30"
+      responses:
+        '201':
+          description: "Datum succesvol toegevoegd"
+        '400':
+          description: "Ongeldige invoer"
+        '401':
+          description: "Geen toegang"
+        '500':
+          description: "Interne serverfout"
+
+  /admin/songs-for-date:
+    get:
+      summary: "Admin - Liederen ophalen voor een specifieke datum"
+      description: "Haal alle ingestuurde liederen en het aantal keren dat ze zijn gekozen voor een specifieke datum."
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: "De datum waarvoor de ingestuurde liederen moeten worden opgehaald."
+      responses:
+        '200':
+          description: "Succesvol opgehaald"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: "Amazing Grace"
+                    timesChosen:
+                      type: integer
+                      example: 3
+        '400':
+          description: "Ongeldige invoer"
+        '401':
+          description: "Geen toegang"
+        '500':
+          description: "Interne serverfout"
+
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []

@@ -1,0 +1,12 @@
+<h2 class="text-2xl font-semibold mb-4">Beschikbare Datums</h2>
+
+<ul class="list-none">
+  <li *ngFor="let date of availableDates" class="mb-2">
+    <a
+      [routerLink]="['/select-songs', date]"
+      class="text-blue-500 hover:underline"
+    >
+      {{ date }}
+    </a>
+  </li>
+</ul>

@@ -5,12 +5,15 @@
     <div class="flex justify-between items-center mb-2">
       <label class="block font-semibold">Kies lied {{ i + 1 }}:</label>
 
-      <!-- Toggle: Selecteer nummer of eigen suggestie -->
-      <label class="inline-flex items-center cursor-pointer">
+      <div class="flex items-center">
+        <!-- Toggle: Selecteer nummer of eigen suggestie -->
         <span class="mr-2 text-sm">Eigen suggestie</span>
-        <input type="checkbox" [(ngModel)]="isCustomSong[i]" class="toggle-checkbox hidden">
-        <span class="toggle-label block w-10 h-6 rounded-full bg-gray-300 transition"></span>
-      </label>
+        <label class="relative inline-block w-10 h-6 cursor-pointer">
+          <input type="checkbox" [(ngModel)]="isCustomSong[i]" class="toggle-checkbox sr-only peer">
+          <span class="block w-full h-full rounded-full bg-gray-300 transition peer-checked:bg-blue-500"></span>
+          <span class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-4"></span>
+        </label>
+      </div>
     </div>
 
     <!-- Als de toggle is uitgeschakeld, toon de select optie voor bestaande nummers -->

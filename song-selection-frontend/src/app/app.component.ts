@@ -14,16 +14,8 @@ import {SongService} from "./song.service";
 })
 export class AppComponent {
   title = 'song-selection-app';
-  availableDates: string[] = [];
 
   constructor(protected authService: AuthService, private router: Router, private songService: SongService) {
-  }
-
-  ngOnInit(): void {
-    // Haal de lijst van beschikbare datums op
-    this.songService.getAvailableDates().subscribe(dates => {
-      this.availableDates = dates;
-    });
   }
 
   logout() {

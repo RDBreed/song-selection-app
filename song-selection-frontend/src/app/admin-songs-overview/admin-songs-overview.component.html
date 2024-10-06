@@ -4,15 +4,20 @@
   <div class="mb-4">
     <label class="block mb-1 font-semibold">Selecteer een datum:</label>
     <input
-      type="date"
+      list="availableDates"
       [(ngModel)]="selectedDate"
       class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Kies een datum"
     />
+    <datalist id="availableDates">
+      <option *ngFor="let date of availableDates" [value]="date"></option>
+    </datalist>
   </div>
 
   <button
     (click)="getSongOverview()"
     class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
+    [disabled]="!selectedDate"
   >
     Bekijk overzicht
   </button>
@@ -21,7 +26,7 @@
     <h3 class="text-xl font-semibold mb-4">Nummers voor {{ selectedDate }}:</h3>
     <ul class="list-disc list-inside">
       <li *ngFor="let song of songOverview" class="mb-2">
-        <span class="font-semibold">{{ song.title }}</span> - <span>{{ song.count }} keer opgegeven</span>
+        <span class="font-semibold">{{ song.title }}</span> - <span>{{ song.timesChosen }} keer opgegeven</span>
       </li>
     </ul>
   </div>
