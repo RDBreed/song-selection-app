@@ -16,7 +16,7 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    this.songService.getAvailableDates().subscribe(dates => {
+    this.songService.getAvailableDatesUseCase().subscribe(dates => {
       this.availableDates = dates;
     });
   }

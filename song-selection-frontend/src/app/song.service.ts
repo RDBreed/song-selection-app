@@ -21,7 +21,7 @@ export class SongService {
     return this.http.post(`${this.apiUrl}/songs-for-date`, {date, songRequests});
   }
 
-  getAvailableDates(): Observable<string[]> {
+  getAvailableDatesUseCase(): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/dates`);
   }
 
@@ -29,6 +29,10 @@ export class SongService {
   getSongsForDate(date: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/songs-for-date/${date}`);
   }
+
+  searchSongs(term: string): Observable<any[]> {
+      return this.http.get<any[]>(`${this.apiUrl}/songs/search?q=${term}`);
+    }
 
   submitSongs(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/submit-songs`, data);

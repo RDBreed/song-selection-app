@@ -6,7 +6,6 @@
       <label class="block font-semibold">Kies lied {{ i + 1 }}:</label>
 
       <div class="flex items-center">
-        <!-- Toggle: Selecteer nummer of eigen suggestie -->
         <span class="mr-2 text-sm">Eigen suggestie</span>
         <label class="relative inline-block w-10 h-6 cursor-pointer">
           <input type="checkbox" [(ngModel)]="isCustomSong[i]" class="toggle-checkbox sr-only peer">
@@ -16,17 +15,13 @@
       </div>
     </div>
 
-    <!-- Als de toggle is uitgeschakeld, toon de select optie voor bestaande nummers -->
     <div *ngIf="!isCustomSong[i]" class="mb-4">
-      <select
-        [(ngModel)]="selectedSongs[i]"
-        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option *ngFor="let song of availableSongs" [value]="song.title">{{ song.title }}</option>
-      </select>
-    </div>
+      <app-song-search
+        [selectedSong]="selectedSongs[i]"
+        (songSelected)="onSongSelected($event, i)">
+      </app-song-search>
+        </div>
 
-    <!-- Als de toggle is ingeschakeld, toon de invoer voor een eigen suggestie -->
     <div *ngIf="isCustomSong[i]" class="mb-4">
       <input
         type="text"

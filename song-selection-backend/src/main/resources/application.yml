@@ -1,0 +1,4 @@
+settings:
+  cors_origin: http://localhost:4200
+jwt:
+  secret: VGhpc0lzQVNlY3JldE5vdFZlcnlTZWNyZXQVGhpc0lzQVNlY3JldE5vdFZlcnlTZWNyZXQVGhpc0lzQVNlY3JldE5vdFZlcnlTZWNyZXQ

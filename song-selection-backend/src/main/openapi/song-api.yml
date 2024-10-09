@@ -10,7 +10,31 @@ tags:
   - name: songs
     description: Liederen
 paths:
-
+  /songs/search:
+    get:
+      summary: Zoek liedjes op basis van een zoekterm
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+          required: true
+          description: De zoekterm om liedjes op te halen
+      responses:
+        '200':
+          description: Een lijst van liedjes die overeenkomen met de zoekterm
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Song'
+        '400':
+          description: Ongeldige zoekterm
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /songs:
     get:
       summary: "Beschikbare liederen ophalen"
@@ -23,17 +47,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    title:
-                      type: string
-                      example: "Amazing Grace"
-                    number:
-                      type: integer
-                      example: 101
-                    bundel:
-                      type: string
-                      example: "Opwekkingsliederen"
+                  $ref: '#/components/schemas/Song'
         '500':
           description: "Interne serverfout"
 
@@ -73,7 +87,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  example: ["Amazing Grace", "Blessed Assurance", "Eigen suggestie lied"]
+                  example: [ "Amazing Grace", "Blessed Assurance", "Eigen suggestie lied" ]
                 motivation:
                   type: string
                   example: "We kozen deze liederen omdat ze perfect passen bij het thema van de zondag."
@@ -85,3 +99,19 @@ paths:
         '500':
           description: "Interne serverfout"
 
+components:
+  schemas:
+    Song:
+      type: object
+      properties:
+        number:
+          type: integer
+        title:
+          type: string
+        bundle:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string

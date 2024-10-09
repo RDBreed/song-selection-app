@@ -22,7 +22,7 @@ export class AdminSongsOverviewComponent {
   }
 
   private loadAvailableDates() {
-    this.songService.getAvailableDates().subscribe(dates => {
+    this.songService.getAvailableDatesUseCase().subscribe(dates => {
       this.availableDates = dates;
     });
   }

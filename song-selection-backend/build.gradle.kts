@@ -3,10 +3,18 @@ import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 plugins {
   id("java")
   id("org.openapi.generator") version "7.8.0"
+  id("org.springframework.boot") version "3.3.4"
+  id("io.spring.dependency-management") version "1.1.6"
 }
 
 group = "com.fedex.cap"
 version = "1.0-SNAPSHOT"
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
 
 repositories {
   mavenCentral()
@@ -21,10 +29,19 @@ sourceSets.create("wiremock") {
 
 
 dependencies {
+  implementation("org.springframework.boot:spring-boot-starter-web")
+  implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+  implementation("org.apache.commons:commons-csv:1.8")
+  implementation("org.springframework.boot:spring-boot-starter-security")
+  implementation("io.jsonwebtoken:jjwt-api:0.12.6")  // JJWT API
+  implementation("io.jsonwebtoken:jjwt-impl:0.12.6") // JJWT Implementation
+  implementation("io.jsonwebtoken:jjwt-jackson:0.12.6") // For JSON parsing using Jackson
+  runtimeOnly("com.h2database:h2")
+
   wiremockImplementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
   wiremockImplementation("org.wiremock:wiremock-standalone:3.9.1")
-  testImplementation(platform("org.junit:junit-bom:5.10.0"))
-  testImplementation("org.junit.jupiter:junit-jupiter")
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.test {

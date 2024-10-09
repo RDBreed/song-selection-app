@@ -1,43 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
-import {SongService} from '../song.service';
-import {NgFor, NgIf} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { SongService } from '../song.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SongSearchComponent } from '../song-search/song-search.component'; // Import the new component
 
 @Component({
   selector: 'app-song-selection',
   standalone: true,
   templateUrl: './song-selection.component.html',
   styleUrl: './song-selection.component.scss',
-  imports: [FormsModule, NgFor, HttpClientModule, NgIf]
+  imports: [FormsModule, NgFor, HttpClientModule, NgIf, SongSearchComponent]
 })
 export class SongSelectionComponent implements OnInit {
   selectedDate: string = '';
   selectedSongs: string[] = ['', '', ''];
   customSongs: string[] = ['', '', ''];
   isCustomSong: boolean[] = [false, false, false];
-  availableSongs: { title: string }[] = [];
   motivation: string = '';
   errorMessage: string = '';
 
-  constructor(private route: ActivatedRoute, private songService: SongService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private songService: SongService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getDates()
-    this.getAvailableSongs()
-  }
-  private getDates(){
-   this.route.paramMap.subscribe(params => {
-        this.selectedDate = params.get('date')!;
-      });
+    this.route.paramMap.subscribe(params => {
+      this.selectedDate = params.get('date')!;
+    });
   }
 
-  private getAvailableSongs(){
-   this.songService.getSongs().subscribe(songs => {
-        this.availableSongs = songs;
-      });
+  onSongSelected(song: string, index: number) {
+    this.selectedSongs[index] = song;
   }
 
   submitSongs() {
@@ -54,10 +51,10 @@ export class SongSelectionComponent implements OnInit {
     this.songService.submitSongs(data).subscribe({
       next: (response: any) => {
         this.router.navigate(['/']);
-    },
+      },
       error: () => {
-            this.errorMessage = 'Versturen niet gelukt. Probeer opnieuw alstublieft.';
-          }
+        this.errorMessage = 'Versturen niet gelukt. Probeer opnieuw alstublieft.';
+      }
     });
   }
 }

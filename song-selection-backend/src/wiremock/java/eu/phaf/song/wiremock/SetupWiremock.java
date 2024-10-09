@@ -16,6 +16,7 @@ public class SetupWiremock {
 
   public static void main(String[] args) {
     WireMock.configureFor(8080);
+    stubFor(DefaultApiMockServer.stubSongsSearchGet200("Amazing Grace", DefaultApiMockServer.songsSearchGet200ResponseSample1()).withHeader("Accept", matching(".*")));
     stubFor(DefaultApiMockServer.stubDatesGet200(DefaultApiMockServer.datesGet200ResponseSample1()).withHeader("Accept", matching(".*")));
     stubFor(DefaultApiMockServer.stubSongsGet200(DefaultApiMockServer.songsGet200ResponseSample1()).withHeader("Accept", matching(".*")));
     stubFor(stubSubmitSongsPost200().withHeader("Accept", matching(".*")));
