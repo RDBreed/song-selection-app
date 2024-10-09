@@ -24,7 +24,6 @@ export class LoginComponent {
   login() {
     this.authService.login({username: this.username, password: this.password}).subscribe({
       next: (response: any) => {
-        localStorage.setItem('token', response.token);
         this.router.navigate(['/admin/songs-overview']);
       },
       error: () => {

@@ -4,6 +4,7 @@ package eu.phaf.songselector.admin.spring;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -12,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class SecurityConfiguration {
   public SecurityFilterChain securityFilterChain(HttpSecurity http, @Value("${settings.cors_origin}") String corsOrigins) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable)
       .authorizeHttpRequests(customizer -> customizer
-        .requestMatchers("/admin/**").hasRole("ADMIN")
+        .requestMatchers("/admin/**", "/auth/check-token").hasRole("ADMIN")
         .anyRequest().permitAll()
       )
       .cors(customizer -> customizer.configurationSource(request -> {
@@ -38,6 +38,8 @@ public class SecurityConfiguration {
           configuration.setAllowedOrigins(Collections.singletonList(corsOrigins));
           configuration.setAllowedMethods(List.of("*"));
           configuration.setAllowedHeaders(List.of("*"));
+          configuration.addExposedHeader(HttpHeaders.SET_COOKIE);
+          configuration.setAllowCredentials(true);
           return configuration;
         }
 

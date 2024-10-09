@@ -8,6 +8,8 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import {AuthService} from './auth.service';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 export const canActivate: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -15,8 +17,16 @@ export const canActivate: CanActivateFn = (
 ) => {
   const authService = inject(AuthService);
   const router = inject(Router);
-
-  return authService.isAuthenticated() ? true : router.navigate(['/login']);
+// return true;
+  return authService.checkTokenValidity().pipe(
+       map(() => {
+         return true;
+       }),
+       catchError(() => {
+         router.navigate(['/login']); // Redirect to login on error
+         return of(false); // Block the route
+       })
+     );
 };
 
 export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => canActivate(route, state);

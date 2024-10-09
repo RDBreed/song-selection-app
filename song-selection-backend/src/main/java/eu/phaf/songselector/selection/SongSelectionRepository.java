@@ -29,6 +29,6 @@ public interface SongSelectionRepository {
     }
   }
 
-  public record SongSelected(String song, String motivation) {
+  record SongSelected(String song, String motivation) {
   }
 }

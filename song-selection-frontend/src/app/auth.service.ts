@@ -13,14 +13,25 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(credentials: { username: string, password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/login`, credentials);
+    return this.http.post(`${this.apiUrl}/auth/login`, credentials, {
+        withCredentials: true,
+      });
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+ checkTokenValidity(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth/check-token`, {
+                                                                           withCredentials: true,
+                                                                         });
+  }
+
+  isAuthenticated(): Observable<any> {
+    return this.checkTokenValidity();
 }
 
   logout() {
-    localStorage.removeItem('token');
+    return this.http.post(`${this.apiUrl}/auth/logout`, null,
+    {
+         withCredentials: true,
+             });
   }
 }
