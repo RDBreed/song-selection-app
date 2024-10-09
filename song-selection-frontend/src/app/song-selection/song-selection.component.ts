@@ -34,7 +34,15 @@ export class SongSelectionComponent implements OnInit {
   }
 
   onSongSelected(song: string, index: number) {
-    this.selectedSongs[index] = song;
+    this.selectedSongs[index] = song; // Set the selected song for the correct index
+    // Focus on the next input field if it exists
+    const nextInputIndex = index;
+    const nextInput = document.querySelectorAll('app-song-search input')[nextInputIndex];
+
+    if (nextInput) {
+      // Check if the next input field is a custom song or another search component
+      (nextInput as HTMLElement).focus();
+    }
   }
 
   submitSongs() {

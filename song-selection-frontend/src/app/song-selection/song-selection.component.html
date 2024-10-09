@@ -17,6 +17,7 @@
 
     <div *ngIf="!isCustomSong[i]" class="mb-4">
       <app-song-search
+        #songInput
         [selectedSong]="selectedSongs[i]"
         (songSelected)="onSongSelected($event, i)">
       </app-song-search>
