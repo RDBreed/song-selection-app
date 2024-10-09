@@ -3,7 +3,7 @@ import { SongService } from '../song.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { SongSearchComponent } from '../song-search/song-search.component'; // Import the new component
 
 @Component({
@@ -11,7 +11,7 @@ import { SongSearchComponent } from '../song-search/song-search.component'; // I
   standalone: true,
   templateUrl: './song-selection.component.html',
   styleUrl: './song-selection.component.scss',
-  imports: [FormsModule, NgFor, HttpClientModule, NgIf, SongSearchComponent]
+  imports: [FormsModule, NgFor, NgIf, SongSearchComponent]
 })
 export class SongSelectionComponent implements OnInit {
   selectedDate: string = '';

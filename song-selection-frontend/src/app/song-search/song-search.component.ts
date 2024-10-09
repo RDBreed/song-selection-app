@@ -4,12 +4,12 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 
 @Component({
   selector: 'app-song-search',
   standalone: true,
-  imports: [FormsModule, NgFor, HttpClientModule, NgIf],
+  imports: [FormsModule, NgFor, NgIf],
   templateUrl: './song-search.component.html',
   styleUrl: './song-search.component.scss'
 })

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {HttpClientModule} from "@angular/common/http";
+import {} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {NgFor, NgIf} from "@angular/common";
 import {SongService} from "./song.service";
@@ -8,7 +8,7 @@ import {SongService} from "./song.service";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule, NgIf, NgFor],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgIf, NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

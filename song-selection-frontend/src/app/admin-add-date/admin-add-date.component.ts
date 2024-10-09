@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {AdminSongService} from '../admin-song.service';
 import {FormsModule} from '@angular/forms';
 import {firstValueFrom} from 'rxjs';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 @Component({
   selector: 'app-admin-add-date',
   standalone: true,
   templateUrl: './admin-add-date.component.html',
   styleUrl: './admin-add-date.component.scss',
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule],
 })
 export class AdminAddDateComponent {
   selectedDate: string = '';
