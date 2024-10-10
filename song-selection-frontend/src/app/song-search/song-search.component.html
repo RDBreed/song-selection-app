@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto mt-6 bg-white p-6 rounded-lg shadow-md">
+<div class="max-w-md mx-auto mt-6 bg-white p-6 rounded-lg shadow-md relative">
   <input
     type="text"
     placeholder="Zoek lied"
@@ -7,7 +7,7 @@
     (input)="onSearch($event)"
   />
   <ul *ngIf="results && results.length > 0"
-      class="mt-2 bg-white border border-gray-300 rounded-lg shadow-md max-h-60 overflow-auto">
+      class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md max-h-60 overflow-auto z-10 mt-1">
     <li *ngFor="let result of results"
         (click)="selectSong(result.title)"
         class="p-2 cursor-pointer hover:bg-blue-100 transition duration-200"
