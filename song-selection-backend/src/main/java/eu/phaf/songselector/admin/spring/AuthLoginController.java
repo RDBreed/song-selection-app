@@ -37,7 +37,7 @@ public class AuthLoginController {
     this.cookieExpiry = cookieExpiry;
   }
 
-  @PostMapping("/auth/login")
+  @PostMapping("/api/auth")
   public ResponseEntity<Void> login(@RequestBody Credentials credentials) {
     Authentication authenticate = authenticationManager.authenticate(
       new UsernamePasswordAuthenticationToken(credentials.username(), credentials.password())
@@ -62,12 +62,12 @@ public class AuthLoginController {
     }
   }
 
-  @GetMapping("/auth/check-token")
+  @GetMapping("/api/protected")
   public ResponseEntity<Void> checkTokenValidity() {
     return ResponseEntity.ok().build();
   }
 
-  @PostMapping("/auth/logout")
+  @PostMapping("/auth/expired")
   public ResponseEntity<Void> logout() {
     ResponseCookie cookie = ResponseCookie.from(ACCESS_TOKEN, "")
       .httpOnly(true)

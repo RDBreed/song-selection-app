@@ -30,7 +30,7 @@ public class SecurityConfiguration {
   public SecurityFilterChain securityFilterChain(HttpSecurity http, @Value("${settings.cors_origin}") String corsOrigins) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable)
       .authorizeHttpRequests(customizer -> customizer
-        .requestMatchers("/admin/**", "/auth/check-token").hasRole("ADMIN")
+        .requestMatchers("/admin/**", "/api/protected").hasRole("ADMIN")
         .anyRequest().permitAll()
       )
       .cors(customizer -> customizer.configurationSource(request -> {

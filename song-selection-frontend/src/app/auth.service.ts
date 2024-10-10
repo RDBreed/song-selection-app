@@ -14,13 +14,13 @@ export class AuthService {
   }
 
   login(credentials: { username: string, password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/login`, credentials, {
+    return this.http.post(`${this.apiUrl}/api/auth`, credentials, {
       withCredentials: true,
     });
   }
 
   checkTokenValidity(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/auth/check-token`, {
+    return this.http.get(`${this.apiUrl}/api/protected`, {
       withCredentials: true,
     });
   }
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post(`${this.apiUrl}/auth/logout`, null,
+    return this.http.post(`${this.apiUrl}/auth/expired`, null,
       {
         withCredentials: true,
       });

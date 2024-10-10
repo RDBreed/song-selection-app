@@ -10,7 +10,7 @@ tags:
   - name: songs
     description: Liederen
 paths:
-  /auth/login:
+  /api/auth:
     post:
       summary: "Inloggen voor gebruikers"
       description: "Log de gebruiker in en retourneer een JWT-token."
