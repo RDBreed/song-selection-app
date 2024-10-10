@@ -4,7 +4,7 @@ import {AdminAddDateComponent} from "./admin-add-date/admin-add-date.component";
 import {SongSelectionComponent} from "./song-selection/song-selection.component";
 import {HomeComponent} from "./home/home.component";
 import {AdminSongsOverviewComponent} from "./admin-songs-overview/admin-songs-overview.component";
-import { provideHttpClient, withInterceptors } from '@angular/common/http'
+import {provideHttpClient, withInterceptors} from '@angular/common/http'
 import {canActivate} from './auth.guard';
 import {LoginComponent} from "./login/login.component";
 import {tokenInterceptor} from "./token.interceptor";

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminAddDateComponent } from './admin-add-date.component';
+import {AdminAddDateComponent} from './admin-add-date.component';
 
 describe('AdminAddDateComponent', () => {
   let component: AdminAddDateComponent;
@@ -10,8 +10,8 @@ describe('AdminAddDateComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AdminAddDateComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(AdminAddDateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -31,8 +31,8 @@ export class SongService {
   }
 
   searchSongs(term: string): Observable<any[]> {
-      return this.http.get<any[]>(`${this.apiUrl}/songs/search?q=${term}`);
-    }
+    return this.http.get<any[]>(`${this.apiUrl}/songs/search?q=${term}`);
+  }
 
   submitSongs(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/submit-songs`, data);

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminSongsOverviewComponent } from './admin-songs-overview.component';
+import {AdminSongsOverviewComponent} from './admin-songs-overview.component';
 
 describe('AdminSongsOverviewComponent', () => {
   let component: AdminSongsOverviewComponent;
@@ -10,8 +10,8 @@ describe('AdminSongsOverviewComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AdminSongsOverviewComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(AdminSongsOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

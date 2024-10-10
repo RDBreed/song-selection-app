@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { AdminSongService } from '../admin-song.service';
-import { SongService } from '../song.service';
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import {Component} from '@angular/core';
+import {AdminSongService} from '../admin-song.service';
+import {SongService} from '../song.service';
 import {FormsModule} from "@angular/forms";
 import {NgFor, NgIf} from "@angular/common";
 

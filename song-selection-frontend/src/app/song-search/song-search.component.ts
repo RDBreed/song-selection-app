@@ -1,9 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SongService } from '../song.service';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
-import { NgFor, NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {SongService} from '../song.service';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {NgFor, NgIf} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {} from '@angular/common/http';
 
 @Component({
@@ -19,7 +19,8 @@ export class SongSearchComponent {
   private searchTerm$ = new Subject<string>();
   results: any[] = [];
 
-  constructor(private songService: SongService) {}
+  constructor(private songService: SongService) {
+  }
 
   ngOnInit() {
     this.searchTerm$
@@ -28,22 +29,22 @@ export class SongSearchComponent {
         distinctUntilChanged()
       )
       .subscribe((term: string) => {
-      this.songService.searchSongs(term).subscribe(songs => {
-                 this.results = songs;
-             });
+        this.songService.searchSongs(term).subscribe(songs => {
+          this.results = songs;
+        });
       });
   }
 
-onSearch(event: Event): void {
-  const input = event.target as HTMLInputElement;
-  const term = input.value;
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const term = input.value;
 
-  if (term.length > 2) {
-    this.searchTerm$.next(term);
-  } else {
-    this.results = [];
+    if (term.length > 2) {
+      this.searchTerm$.next(term);
+    } else {
+      this.results = [];
+    }
   }
-}
 
   selectSong(songTitle: string) {
     this.songSelected.emit(songTitle);

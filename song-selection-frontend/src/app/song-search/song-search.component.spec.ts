@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SongSearchComponent } from './song-search.component';
+import {SongSearchComponent} from './song-search.component';
 
 describe('SongSearchComponent', () => {
   let component: SongSearchComponent;
@@ -10,8 +10,8 @@ describe('SongSearchComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SongSearchComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(SongSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

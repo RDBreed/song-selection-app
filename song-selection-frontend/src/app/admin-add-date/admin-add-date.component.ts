@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {AdminSongService} from '../admin-song.service';
 import {FormsModule} from '@angular/forms';
 import {firstValueFrom} from 'rxjs';
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 @Component({
   selector: 'app-admin-add-date',

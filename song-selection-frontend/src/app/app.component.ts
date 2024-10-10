@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd} from '@angular/router';
-import {} from "@angular/common/http";
+import {NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {AuthService} from "./auth.service";
 import {NgFor, NgIf} from "@angular/common";
 import {SongService} from "./song.service";
-import { filter } from 'rxjs/operators';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,43 +15,43 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   title = 'song-selection-app';
   errorMessage = '';
-isAuthenticated = false;
+  isAuthenticated = false;
 
   constructor(protected authService: AuthService, private router: Router, private songService: SongService) {
   }
 
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe({
-                                                                                                  next: () => {
-                                                                                                    this.isAuthenticated = true;
-                                                                                                  },
-                                                                                                  error: (err) => {
-                                                                                                    this.isAuthenticated = false;
-                                                                                                  }
-                                                                                                });
+      next: () => {
+        this.isAuthenticated = true;
+      },
+      error: (err) => {
+        this.isAuthenticated = false;
+      }
+    });
 
     this.router.events
-          .pipe(filter(event => event instanceof NavigationEnd))
-          .subscribe(() => {
-            this.authService.isAuthenticated().subscribe({
-                                                  next: () => {
-                                                    this.isAuthenticated = true;
-                                                  },
-                                                  error: (err) => {
-                                                    this.isAuthenticated = false;
-                                                  }
-                                                });
-              });
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.authService.isAuthenticated().subscribe({
+          next: () => {
+            this.isAuthenticated = true;
+          },
+          error: (err) => {
+            this.isAuthenticated = false;
+          }
+        });
+      });
   }
 
   logout() {
     this.authService.logout().subscribe({
-               next: (response: any) => {
-                        this.router.navigate(['/login']);
-                                   },
-                   error: () => {
-                     this.errorMessage = 'Kan niet uitloggen...';
-                   }
-                 });
+      next: (response: any) => {
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        this.errorMessage = 'Kan niet uitloggen...';
+      }
+    });
   }
 }

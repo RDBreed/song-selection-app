@@ -10,7 +10,8 @@
         <label class="relative inline-block w-10 h-6 cursor-pointer">
           <input type="checkbox" [(ngModel)]="isCustomSong[i]" class="toggle-checkbox sr-only peer">
           <span class="block w-full h-full rounded-full bg-gray-300 transition peer-checked:bg-blue-500"></span>
-          <span class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-4"></span>
+          <span
+            class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-4"></span>
         </label>
       </div>
     </div>
@@ -21,7 +22,7 @@
         [selectedSong]="selectedSongs[i]"
         (songSelected)="onSongSelected($event, i)">
       </app-song-search>
-        </div>
+    </div>
 
     <div *ngIf="isCustomSong[i]" class="mb-4">
       <input

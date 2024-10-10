@@ -2,9 +2,7 @@ import {Component} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 import {FormsModule} from "@angular/forms";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {NgFor, NgIf} from "@angular/common";
-import {tokenInterceptor} from "../token.interceptor";
 
 @Component({
   selector: 'app-login',

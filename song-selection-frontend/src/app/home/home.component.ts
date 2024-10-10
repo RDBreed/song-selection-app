@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {NgFor, NgIf} from "@angular/common";
 import {SongService} from "../song.service";
 
@@ -12,7 +12,8 @@ import {SongService} from "../song.service";
 })
 export class HomeComponent {
   availableDates: string[] = [];
- constructor(private songService: SongService) {
+
+  constructor(private songService: SongService) {
   }
 
   ngOnInit(): void {

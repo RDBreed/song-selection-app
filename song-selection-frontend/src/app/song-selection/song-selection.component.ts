@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { SongService } from '../song.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { NgFor, NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {SongService} from '../song.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {NgFor, NgIf} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {} from '@angular/common/http';
-import { SongSearchComponent } from '../song-search/song-search.component'; // Import the new component
+import {SongSearchComponent} from '../song-search/song-search.component'; // Import the new component
 
 @Component({
   selector: 'app-song-selection',
@@ -25,7 +25,8 @@ export class SongSelectionComponent implements OnInit {
     private route: ActivatedRoute,
     private songService: SongService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
