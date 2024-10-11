@@ -20,7 +20,7 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.login({username: this.username, password: this.password}).subscribe({
+    this.authService.login({userName: this.username, password: this.password}).subscribe({
       next: (response: any) => {
         this.router.navigate(['/admin/songs-overview']);
       },
