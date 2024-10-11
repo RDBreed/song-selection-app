@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post(`${this.apiUrl}/auth/expired`, null,
+    return this.http.post(`${this.apiUrl}/auth/expire`, null,
       {
         withCredentials: true,
       });

@@ -67,7 +67,7 @@ public class AuthLoginController {
     return ResponseEntity.ok().build();
   }
 
-  @PostMapping("/auth/expired")
+  @PostMapping("/auth/expire")
   public ResponseEntity<Void> logout() {
     ResponseCookie cookie = ResponseCookie.from(ACCESS_TOKEN, "")
       .httpOnly(true)
