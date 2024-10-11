@@ -17,8 +17,8 @@ export default function handler(
   try {
     // You would save the data to a database here
 
-    res.status(200).json({message: "Liedkeuzes succesvol ingediend"});
-  } catch (error) {
-    res.status(500).json({error: "Interne serverfout"});
+    return res.status(200).json({message: "Liedkeuzes succesvol ingediend"});
+  } catch {
+    return res.status(500).json({error: "Interne serverfout"});
   }
 }
