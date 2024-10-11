@@ -8,9 +8,9 @@ export default function handler(
     return res.status(405).json({error: "Methode niet toegestaan"});
   }
 
-  const {date, songs, motivation} = req.body;
+  const {date, songs, /*motivation*/} = req.body;
 
-  if (!date || !songs || songs.length === 0 || !motivation) {
+  if (!date || !songs || songs.length === 0) {
     return res.status(400).json({error: "Ongeldige invoer"});
   }
 
