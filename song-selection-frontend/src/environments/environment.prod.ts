@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://vercel-edge-middleware-jwt-authentication.vercel.app'  // API URL voor de productieomgeving
+  authUrl: 'https://vercel-edge-middleware-jwt-authentication.vercel.app',
+  apiUrl: 'https://localhost:8080' // TODO
 };

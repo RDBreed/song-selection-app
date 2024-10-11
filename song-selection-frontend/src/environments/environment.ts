@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'  // API URL voor de development omgeving
+  authUrl: 'http://localhost:8080',
+  apiUrl: 'http://localhost:8080'
 };
