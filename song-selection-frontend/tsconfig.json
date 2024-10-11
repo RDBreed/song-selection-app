@@ -22,6 +22,7 @@
       "ES2022",
       "dom"
     ],
+    "baseUrl": ".",  // This sets the base URL for imports to the root folder
     "paths": {
       "@lib/*": [
         "lib/*"
