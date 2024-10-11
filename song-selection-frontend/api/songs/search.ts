@@ -1,6 +1,6 @@
 import {VercelRequest, VercelResponse} from '@vercel/node';
 import axios from 'axios';
-import {getSongApiUrl} from "@lib/constants";
+import {getSongApiUrl} from '../../lib/constants.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const {q} = req.query;
