@@ -4,6 +4,7 @@ import {getSongApiUrl} from '../lib/constants.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
+    console.log(`Fetching data for url ${getSongApiUrl()}/dates`)
     const response = await axios.get(`${getSongApiUrl()}/dates`);
     return res.status(200).json(response.data);
   } catch (error) {
