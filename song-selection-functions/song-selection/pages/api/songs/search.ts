@@ -1,5 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {getXataClient} from "@/src/xata";
+import {getXataBranch} from "@/lib/constants";
 
 // const songs = [
 //   {number: 1, title: "Amazing Grace", bundle: "Hymns"},
@@ -17,6 +18,7 @@ export default async function handler(
     return res.status(400).json({error: "Zoekterm is verplicht."});
   }
 
+  console.log(getXataBranch())
   const xataClient = getXataClient();
   const results = await xataClient.db.opwekking.search(q.toString(), {target: ['Number', 'Title']})
 
