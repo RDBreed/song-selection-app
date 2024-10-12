@@ -1,10 +1,9 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {SongService} from '../song.service';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import {Observable, Subject} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 import {NgFor, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {} from '@angular/common/http';
 
 @Component({
   selector: 'app-song-search',

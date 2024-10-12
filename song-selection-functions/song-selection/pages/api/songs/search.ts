@@ -30,5 +30,5 @@ export default async function handler(
     return res.status(200).json([]);
   }
 
-  return res.status(200).json(results.records.map(s => ({title: s.Title, number: s.Number})));
+  return res.status(200).json(results.records.map(s => ({title: `${s.Number} - ${s.Title}`, number: s.Number})));
 }
