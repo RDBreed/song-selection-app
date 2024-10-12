@@ -1,5 +1,4 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-import {getXataClient, XataClient} from "@/src/xata";
 
 const songs = [
   {number: 1, title: "Amazing Grace", bundle: "Hymns"},

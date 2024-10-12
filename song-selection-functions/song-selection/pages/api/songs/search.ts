@@ -1,11 +1,11 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {getXataClient} from "@/src/xata";
 
-const songs = [
-  {number: 1, title: "Amazing Grace", bundle: "Hymns"},
-  {number: 2, title: "Blessed Assurance", bundle: "Hymns"},
-  // Add more song objects here
-];
+// const songs = [
+//   {number: 1, title: "Amazing Grace", bundle: "Hymns"},
+//   {number: 2, title: "Blessed Assurance", bundle: "Hymns"},
+//   // Add more song objects here
+// ];
 
 export default async function handler(
   req: NextApiRequest,
