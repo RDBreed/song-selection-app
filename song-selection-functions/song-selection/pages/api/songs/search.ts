@@ -1,4 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
+import {getXataClient} from "@/src/xata";
 
 const songs = [
   {number: 1, title: "Amazing Grace", bundle: "Hymns"},
@@ -6,7 +7,7 @@ const songs = [
   // Add more song objects here
 ];
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
@@ -16,13 +17,16 @@ export default function handler(
     return res.status(400).json({error: "Zoekterm is verplicht."});
   }
 
-  const results = songs.filter((song) =>
-    song.title.toLowerCase().includes(q.toString().toLowerCase())
-  );
+  const xataClient = getXataClient();
+  const results = await xataClient.db.opwekking.search(q.toString(), {target: ['Number', 'Title']})
 
-  if (results.length === 0) {
+  // const results = songs.filter((song) =>
+  //   song.title.toLowerCase().includes(q.toString().toLowerCase())
+  // );
+
+  if (results.totalCount === 0) {
     return res.status(200).json([]);
   }
 
-  return res.status(200).json(results);
+  return res.status(200).json(results.records);
 }
