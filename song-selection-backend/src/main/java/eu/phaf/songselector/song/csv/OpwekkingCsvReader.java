@@ -26,7 +26,7 @@ public class OpwekkingCsvReader {
     try {
       // Resource path to your songs.csv
       Reader reader = new InputStreamReader(this.getClass().getResourceAsStream("/opwekking.csv"));
-      CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withRecordSeparator(";"));
+      CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withDelimiter(';'));
 
       for (CSVRecord record : csvParser) {
         String nr = record.get("\uFEFFNr");
