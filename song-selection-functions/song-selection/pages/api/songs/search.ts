@@ -14,11 +14,11 @@ export default async function handler(
 
   console.log(getXataBranch())
   const xataClient = getXataClient();
-  const results = await xataClient.db.opwekking.search(q.toString(), {target: ['Number', 'Title']})
+  const results = await xataClient.db.opwekking.filter("Search_field", q).getAll()
 
-  if (results.totalCount === 0) {
+  if (results.length === 0) {
     return res.status(200).json([]);
   }
 
-  return res.status(200).json(results.records.map(s => ({title: `${s.Number} - ${s.Title}`, number: s.Number})));
+  return res.status(200).json(results.map(s => ({title: `${s.Number} - ${s.Title}`, number: s.Number})));
 }

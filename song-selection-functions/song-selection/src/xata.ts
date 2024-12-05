@@ -42,6 +42,14 @@ const tables = [
         comment: "{}",
       },
       {
+        name: "Search_field",
+        type: "text",
+        notNull: false,
+        unique: false,
+        defaultValue: null,
+        comment: "{}",
+      },
+      {
         name: "xata_createdat",
         type: "datetime",
         notNull: true,
