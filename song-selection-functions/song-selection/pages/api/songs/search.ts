@@ -1,6 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {getXataClient} from "@/src/xata";
 import {getXataBranch} from "@/lib/constants";
+import {contains} from "@xata.io/client";
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +15,8 @@ export default async function handler(
 
   console.log(getXataBranch())
   const xataClient = getXataClient();
-  const results = await xataClient.db.opwekking.filter("Search_field", q).getAll()
+  const queryField: string = typeof q === "string" ? q : '';
+  const results = await xataClient.db.opwekking.filter('Search_field', contains(queryField)).getAll()
 
   if (results.length === 0) {
     return res.status(200).json([]);
